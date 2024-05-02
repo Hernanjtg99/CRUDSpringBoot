@@ -1,0 +1,2 @@
+Insert into persona (id,nombre,apellido,email,numero_tel)Values (default,'Hernan','Torres','hjt@hotmail.com','3124359874');
+Insert into persona (id,nombre,apellido,email,numero_tel)Values (default,'Maria','Cantor','MariaCant@hotmail.com','3214756345');

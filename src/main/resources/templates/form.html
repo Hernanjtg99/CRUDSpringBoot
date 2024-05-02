@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+    <h1 th:text="${titulo}"></h1>
+    <form th:action="@{/form}" th:object="${persona}" method="post"><!--Creamos un formulario que se comunica con el controlador por medio de form-->
+    <table>
+        <tr>
+            <td>Nombre</td>
+            <td> <input type="text" th:field="*{nombre}"></td>  <!--guarda lo que le enviemos dentro de la persona creada en el controlador-->
+            <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" ></small>
+        </tr>
+        <tr>
+            <td>Apellido</td>
+            <td> <input type="text" th:field="*{apellido}"></td>
+            <small th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" ></small>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td> <input type="text" th:field="*{email}"></td>
+            <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></small>
+        </tr>
+       <tr>
+            <td>Telefono</td>
+            <td> <input type="text" th:field="*{numeroTel}"></td>
+            <small th:if="${#fields.hasErrors('numeroTel')}" th:errors="*{numeroTel}" ></small>
+        </tr>
+      
+    </table>
+       <input type="hidden" th:field="*{id}">
+       <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

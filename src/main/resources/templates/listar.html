@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><!--Permite usar thymeleaf en la pagina html-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+    <h1 th:text="${titulo}"></h1>
+    <table> <!--Crea una tabla dentro del html-->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>NumeroTelefono</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="persona : ${personas}"> <!--Se comunica con el controlador a traves de ${personas} y usa el metodo findAll de alli-->
+                <td th:text="${persona.id}"> </td>
+                <td th:text="${persona.nombre}"></td>
+                <td th:text="${persona.apellido}"> </td>
+                <td th:text="${persona.email}"> </td>
+                <td th:text="${persona.numeroTel}"> </td>
+                <td ><a th:href="@{/editar/} + ${persona.id}" th:text="'Editar'"></a></td>
+                <td ><a th:href="@{/eliminar/} + ${persona.id}" th:text="'Eliminar'"></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/form}"> Crear Persona</a>
+</body>
+</html>
